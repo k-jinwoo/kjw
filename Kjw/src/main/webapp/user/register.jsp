@@ -1,5 +1,6 @@
 <%@ page contentType="text/html;charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ include file="../header.jsp" %>
+<script src="/Kjw/js/checkUid.js"></script>
 <section id="user" class="register">
             <form action="/Kjw/user/proc/register.jsp" method="POST">
                 <table border="1">
