@@ -17,5 +17,6 @@ public class Sql {
 											+ "`rdate`=NOW()";
 	public static final String SELECT_MEMBER = "SELECT * FROM `BOARD_MEMBER` WHERE `uid`=? AND `pass`=PASSWORD(?)";
 	public static final String SELECT_COUNT_UID = "SELECT COUNT(`uid`) FROM `BOARD_MEMBER` WHERE `uid`=?";
+	public static final String SELECT_COUNT_NICK = "SELECT COUNT(`nick`) FROM `BOARD_MEMBER` WHERE `nick`=?";
 	
 }
