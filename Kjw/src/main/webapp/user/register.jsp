@@ -8,8 +8,10 @@
 <script src="/Kjw/js/checkHp.js"></script>
 <script src="/Kjw/js/zipCode.js"></script>
 <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+<script src="/Kjw/js/validation.js"></script>
+
 <section id="user" class="register">
-            <form action="/Kjw/user/proc/register.jsp" method="POST">
+            <form id="regForm" action="/Kjw/user/proc/register.jsp" method="POST">
                 <table border="1">
                     <caption>사이트 이용정보 입력</caption>
                     <tr>
