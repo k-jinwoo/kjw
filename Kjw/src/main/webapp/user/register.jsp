@@ -4,6 +4,7 @@
 <script src="/Kjw/js/checkPass.js"></script>
 <script src="/Kjw/js/checkNick.js"></script>
 <script src="/Kjw/js/checkName.js"></script>
+<script src="/Kjw/js/checkEmail.js"></script>
 <section id="user" class="register">
             <form action="/Kjw/user/proc/register.jsp" method="POST">
                 <table border="1">
