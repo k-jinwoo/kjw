@@ -1,4 +1,8 @@
+<%@page import="kr.co.Kjw.bean.MemberBean"%>
 <%@ page contentType="text/html;charset=UTF-8" pageEncoding="UTF-8"%>
+<%
+	MemberBean mb = (MemberBean)session.getAttribute("sessMember");
+%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -28,9 +32,15 @@
         <header>
             <a href="/Kjw/index.jsp" class="logo"><img src="/Kjw/img/logo.png" alt="로고"/></a>
             <p>
+            	<% if(mb == null){ %>
                 <a href="/Kjw/index.jsp">HOME |</a>
                 <a href="/Kjw/user/login.jsp">로그인 |</a>
                 <a href="/Kjw/user/terms.jsp">회원가입 |</a>
+                <% }else{ %>
+                <span><%= mb.getNick() %>님 반갑습니다.</span>
+                <a href="/Kjw/index.jsp">HOME |</a>
+                <a href="#">로그아웃 |</a>
+                <% } %>
                 <a href="#">고객센터</a>
             </p>
             <img src="/Kjw/img/head_txt_img.png" alt="3만원 이상 무료배송"/>

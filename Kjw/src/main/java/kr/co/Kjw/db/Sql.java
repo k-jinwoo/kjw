@@ -5,7 +5,7 @@ public class Sql {
 	public static final String SELECT_TERMS = "SELECT * FROM `BOARD_TERMS`";
 	public static final String INSERT_MEMBER = "INSERT INTO `BOARD_MEMBER` SET "
 											+ "`uid`=?,"
-											+ "`pass`=?,"
+											+ "`pass`=PASSWORD(?),"
 											+ "`name`=?,"
 											+ "`nick`=?,"
 											+ "`email`=?,"
@@ -15,5 +15,6 @@ public class Sql {
 											+ "`addr2`=?,"
 											+ "`regip`=?,"
 											+ "`rdate`=NOW()";
+	public static final String SELECT_MEMBER = "SELECT * FROM `BOARD_MEMBER` WHERE `uid`=? AND `pass`=PASSWORD(?)";
 	
 }

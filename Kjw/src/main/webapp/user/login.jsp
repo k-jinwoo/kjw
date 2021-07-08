@@ -1,7 +1,7 @@
 <%@ page contentType="text/html;charset=UTF-8" pageEncoding="UTF-8"%> 
 <%@ include file="../header.jsp" %> 
 <section id="user" class="login">
-    <form action="/Board1/user/proc/login.jsp" method="post">
+    <form action="/Kjw/user/proc/login.jsp" method="post">
         <table border="0">
             <tr>
                 <td><img src="../img/login_ico_id.png" alt="아이디"/></td>
@@ -20,7 +20,7 @@
         <p>
             아직 회원이 아니시면 회원으로 가입하세요.
         </p>
-        <a href="/Board1/user/terms.jsp">회원가입</a>
+        <a href="/Kjw/user/terms.jsp">회원가입</a>
     </div>
 </section>
  <%@ include file="../footer.jsp" %>
