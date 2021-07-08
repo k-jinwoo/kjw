@@ -6,6 +6,8 @@
 <script src="/Kjw/js/checkName.js"></script>
 <script src="/Kjw/js/checkEmail.js"></script>
 <script src="/Kjw/js/checkHp.js"></script>
+<script src="/Kjw/js/zipCode.js"></script>
+<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 <section id="user" class="register">
             <form action="/Kjw/user/proc/register.jsp" method="POST">
                 <table border="1">
