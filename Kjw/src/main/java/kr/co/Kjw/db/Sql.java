@@ -19,5 +19,6 @@ public class Sql {
 	public static final String SELECT_COUNT_UID = "SELECT COUNT(`uid`) FROM `BOARD_MEMBER` WHERE `uid`=?";
 	public static final String SELECT_COUNT_NICK = "SELECT COUNT(`nick`) FROM `BOARD_MEMBER` WHERE `nick`=?";
 	public static final String SELECT_COUNT_EMAIL = "SELECT COUNT(`email`) FROM `BOARD_MEMBER` WHERE `email`=?";
+	public static final String SELECT_COUNT_HP = "SELECT COUNT(`hp`) FROM `BOARD_MEMBER` WHERE `hp`=?";
 	
 }
