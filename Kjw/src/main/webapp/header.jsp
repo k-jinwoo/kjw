@@ -39,7 +39,7 @@
                 <% }else{ %>
                 <span><%= mb.getNick() %>님 반갑습니다.</span>
                 <a href="/Kjw/index.jsp">HOME |</a>
-                <a href="#">로그아웃 |</a>
+                <a href="/Kjw/user/proc/logout.jsp">로그아웃 |</a>
                 <% } %>
                 <a href="#">고객센터</a>
             </p>
