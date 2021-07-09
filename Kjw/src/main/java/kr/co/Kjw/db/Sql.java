@@ -2,7 +2,9 @@ package kr.co.Kjw.db;
 
 public class Sql {
 
+	// 약관 동의 문구 가져오기
 	public static final String SELECT_TERMS = "SELECT * FROM `BOARD_TERMS`";
+	// 회원가입
 	public static final String INSERT_MEMBER = "INSERT INTO `BOARD_MEMBER` SET "
 											+ "`uid`=?,"
 											+ "`pass`=PASSWORD(?),"
@@ -15,6 +17,7 @@ public class Sql {
 											+ "`addr2`=?,"
 											+ "`regip`=?,"
 											+ "`rdate`=NOW()";
+	// register 체크
 	public static final String SELECT_MEMBER = "SELECT * FROM `BOARD_MEMBER` WHERE `uid`=? AND `pass`=PASSWORD(?)";
 	public static final String SELECT_COUNT_UID = "SELECT COUNT(`uid`) FROM `BOARD_MEMBER` WHERE `uid`=?";
 	public static final String SELECT_COUNT_NICK = "SELECT COUNT(`nick`) FROM `BOARD_MEMBER` WHERE `nick`=?";

@@ -1,4 +1,15 @@
 <%@ page contentType="text/html;charset=UTF-8" pageEncoding="UTF-8"%>
+  <script>
+	    $(function(){
+	        $('.slider > ul').bxSlider({
+	            slideWidth: 980,
+	            pager: false,
+	            controls: false,
+	            auto: true
+	        });
+	        $('#tabs').tabs();
+	    });
+	</script>
 <%@ include file="./header.jsp" %>
         <main>
 		    <div class="slider">
@@ -94,4 +105,4 @@
                 </div>
             </div>
         </main>
- <%@ include file="./footer.jsp" %>
+<%@ include file="./footer.jsp" %>
