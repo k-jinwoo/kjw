@@ -40,6 +40,6 @@
                 <li><a href="/Kjw/board/list.jsp?group=market&cate=market"><img src="/Kjw/img/head_menu_badge.png" alt="30%"/>장보기</a></li>
                 <li><a href="/Kjw/board/list.jsp?group=croptalk&cate=story">농작물이야기</a></li>
                 <li><a href="/Kjw/board/list.jsp?group=event&cate=event">이벤트</a></li>
-                <li><a href="#">커뮤니티</a></li>
+                <li><a href="/Kjw/board/list.jsp?group=community&cate=notice">커뮤니티</a></li>
             </ul>
         </header>
