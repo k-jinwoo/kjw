@@ -25,11 +25,9 @@
 	
 	// 게시물 가져오기
 	List<ArticleBean> articles = dao.selectArticles(cate, start);
-	
 %>
 
 <jsp:include page="<%= path %>"/>
-
 <section id="board" class="list">
     <h3>글목록</h3>
     <article>
@@ -44,7 +42,7 @@
             <% for(ArticleBean article : articles) { %>
             <tr>
                 <td><%= pageStartNum-- %></td>
-                <td><a href="/Kjw/board/view.jsp?group=<%= group %>&cate=<%= cate %>&seq=<%= article.getSeq() %>"><%= article.getTitle() %></a>%nbsp;[<%= article.getComment() %>]</td>
+                <td><a href="/Kjw/board/view.jsp?group=<%= group %>&cate=<%= cate %>&seq=<%= article.getSeq() %>"><%= article.getTitle() %></a>&nbsp;[<%= article.getComment() %>]</td>
                 <td><%= article.getNick() %></td>
                 <td><%= article.getRdate().substring(2, 10) %></td>
                 <td><%= article.getHit() %></td>
@@ -64,14 +62,11 @@
 	    <% if(groups[1] < lastPageNum){ %>
 	       <a href="/Kjw/board/list.jsp?group=<%= group %>&cate=<%= cate %>&pg=<%= groups[1] + 1 %>" class="next">다음</a>
 	    <% } %>
-	   </div>
+	</div>
 
     <!-- 글쓰기 버튼 -->
-    <a href="" class="btnWrite">글쓰기</a>
+    <a href="/Kjw/board/write.jsp?group=<%= group %>&cate=<%= cate %>" class="btnWrite">글쓰기</a>
 
 </section>
-    <!-- 내용 끝 -->
-        </article>
-    </section>
 </div>
 <%@ include file="../footer.jsp" %>
