@@ -54,5 +54,8 @@ public class Sql {
 										   + "`oriName`=?, "
 										   + "`newName`=?, "
 										   + "`rdate`=NOW()";
+	// 게시글 삭제
+	public static final String DELETE_ARTICLE = "DELETE FROM `BOARD_ARTICLE` WHERE `seq`=?";
+	
 	
 }

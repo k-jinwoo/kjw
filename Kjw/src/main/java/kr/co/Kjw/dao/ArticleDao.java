@@ -178,4 +178,18 @@ public class ArticleDao {
 		return article;
 	}
 	
+	// view - delete
+	public void deleteArticle(String seq) {
+		try {
+			Connection conn = DBConfig.getInstance().getConnection();
+			PreparedStatement psmt = conn.prepareStatement(Sql.DELETE_ARTICLE);
+			psmt.setString(1, seq);
+			
+			psmt.executeUpdate();
+			
+		}catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+	
 }
