@@ -9,7 +9,6 @@ public class FileBean {
 	private int download;
 	private String rdate;
 	
-	
 	public int getSeq() {
 		return seq;
 	}
@@ -48,5 +47,6 @@ public class FileBean {
 	}
 	
 	
+
 	
 }

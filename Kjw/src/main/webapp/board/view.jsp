@@ -1,4 +1,5 @@
 <%@page import="kr.co.Kjw.bean.ArticleBean"%>
+<%@page import="kr.co.Kjw.bean.FileBean"%>
 <%@page import="kr.co.Kjw.dao.ArticleDao"%>
 <%@ page contentType="text/html;charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ include file="../header.jsp" %>
@@ -27,6 +28,9 @@
 	
 	// 글 가져오기
 	ArticleBean article = dao.selectArticle(seq);
+	
+	// 해당 글 조회수 업데이트
+		dao.updateArticleHit(seq);
 	
 %>
 <jsp:include page="<%= path %>"/>
@@ -73,7 +77,7 @@
             <textarea name="comment" data-seq="" data-parent="" readonly></textarea>
             
             <div>
-                <a href="" class="btnCommentDel">삭제</a>
+                <a href="#" class="btnCommentDel">삭제</a>
                 <a href="#" class="btnCommentModify">수정</a>
             </div>
         </article>

@@ -1,3 +1,4 @@
+<%@page import="org.apache.jasper.tagplugins.jstl.core.Catch"%>
 <%@page import="java.io.File"%>
 <%@page import="java.util.Date"%>
 <%@page import="java.text.SimpleDateFormat"%>
@@ -23,7 +24,7 @@
 	String cate = mRequest.getParameter("cate");
 	String title = mRequest.getParameter("title");
 	String content = mRequest.getParameter("content");
-	String fname = mRequest.getParameter("fname");
+	String fname = mRequest.getFilesystemName("fname");
 	String regip = request.getRemoteAddr();
 	
 	// 세션 사용자 정보 가져오기
@@ -59,34 +60,37 @@
 	}
 	
 	// 파일을 첨부 했을경우
-	if(fname != null){
-		// 고유한 파일 이름 생성하기
-		int i = fname.lastIndexOf(".");
-		String ext = fname.substring(i);
-		
-		SimpleDateFormat sdf = new SimpleDateFormat("yyMMddHHmmss_");
-		String now = sdf.format(new Date());
-		String newName = now+uid+ext;
-		
-		// 파일명 수정 스트림 작업
-		File oriFile = new File(path+"/"+fname);
-		File newFile = new File(path+"/"+newName);
-		oriFile.renameTo(newFile);
-		
-		// 파일 테이블 INSERT 작업
-		// 1,2단계
-		Connection conn = DBConfig.getInstance().getConnection();
-		// 3단계
-		PreparedStatement psmt = conn.prepareStatement(Sql.INSERT_FILE);
-		psmt.setInt(1, seq);
-		psmt.setString(2, fname);
-		psmt.setString(3, newName);
-		// 4단계
-		psmt.executeUpdate();
-		// 5단계 - Select인 경우
-		// 6단계
-		conn.close();
-		
+	try{
+		if(fname != null){
+			// 고유한 파일 이름 생성하기
+			int i = fname.lastIndexOf(".");
+			String ext = fname.substring(i);
+			
+		 	SimpleDateFormat sdf = new SimpleDateFormat("yyMMddHHmmss_");
+			String now = sdf.format(new Date());
+			String newName = now+uid+ext;
+			
+			// 파일명 수정 스트림 작업
+			File oriFile = new File(path+"/"+fname);
+			File newFile = new File(path+"/"+newName);
+			oriFile.renameTo(newFile);
+			
+			// 파일 테이블 INSERT 작업
+			// 1,2단계
+			Connection conn = DBConfig.getInstance().getConnection();
+			// 3단계
+			PreparedStatement psmt = conn.prepareStatement(Sql.INSERT_FILE);
+			psmt.setInt(1, seq);
+			psmt.setString(2, fname);
+			psmt.setString(3, newName);
+			// 4단계
+			psmt.executeUpdate();
+			// 5단계 - Select인 경우
+			// 6단계
+			conn.close();
+		}
+	}catch(Exception e){
+		e.printStackTrace();
 	}
 	// 돌아가기(리다이렉트)
 	response.sendRedirect("/Kjw/board/list.jsp?group="+group+"&cate="+cate);

@@ -26,7 +26,7 @@
                 </tr>
                 <tr>
                     <td>첨부</td>
-                    <td><input type="file" name="fname"/></td>
+                    <td><input style="width:60%; float:left;" type="file" id="fname" name="fname"/></td>
                 </tr>
             </table>
             <div>

@@ -54,8 +54,17 @@ public class Sql {
 										   + "`oriName`=?, "
 										   + "`newName`=?, "
 										   + "`rdate`=NOW()";
+	// 게시글 보기
+		// 파일
+	public static final String SELECT_FILE = "SELECT * FROM `BOARD_FILE` WHERE `seq`=?";
+		// 조회수
+	public static final String UPDATE_ARTICLE_HIT = "UPDATE `BOARD_ARTICLE` SET `hit`=hit+1 WHERE `seq`=?";
+
+	
 	// 게시글 삭제
 	public static final String DELETE_ARTICLE = "DELETE FROM `BOARD_ARTICLE` WHERE `seq`=?";
+	
+	
 	
 	
 }
