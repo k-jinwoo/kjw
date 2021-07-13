@@ -13,6 +13,13 @@
 				return false;
 			}
 		});
+		$('.btnCommentDel').click(function(){
+			if(confirm('정말 댓글을 삭제 하시겠습니까?')){
+				return true;
+			}else{
+				return false;
+			}
+		});
 	});
 </script>
 <%
@@ -83,7 +90,7 @@
             <textarea name="comment" data-seq="<%= comment.getSeq() %>" data-parent="<%= comment.getParent() %>" readonly><%= comment.getContent() %></textarea>
             <% if(comment.getUid().equals(mb.getUid())){ %>
             <div>
-                <a href="#" class="btnCommentDel">삭제</a>
+                <a href="/Kjw/board/proc/commentDelete.jsp?group=<%= group %>&cate=<%= cate %>&seq=<%= comment.getSeq() %>&parent=<%= comment.getParent() %>" class="btnCommentDel">삭제</a>
                 <a href="#" class="btnCommentModify">수정</a>
             </div>
             <% } %>

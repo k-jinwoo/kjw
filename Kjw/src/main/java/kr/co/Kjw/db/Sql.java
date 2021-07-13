@@ -85,6 +85,8 @@ public class Sql {
 		// 댓글 카운트 증감
 	public static final String UPDATE_COMMENT_PLUS = "UPDATE `BOARD_ARTICLE` SET `comment` = `comment`+1 WHERE `seq`=?";
 	public static final String UPDATE_COMMENT_MINUS = "UPDATE `BOARD_ARTICLE` SET `comment` = `comment`-1 WHERE `seq`=?";
+		// 댓글 삭제
+	public static final String DELETE_COMMENT = "DELETE FROM `BOARD_ARTICLE` WHERE `seq`=?";
 	
 	
 	

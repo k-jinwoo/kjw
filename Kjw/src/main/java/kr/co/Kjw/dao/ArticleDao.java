@@ -353,5 +353,21 @@ public class ArticleDao {
 			e.printStackTrace();
 		}
 	}
+	
+	// deleteComment
+	public void deleteComment(String seq) {
+		try {
+			Connection conn = DBConfig.getInstance().getConnection();
+			PreparedStatement psmt = conn.prepareStatement(Sql.DELETE_COMMENT);
+			psmt.setString(1, seq);
+			
+			psmt.executeUpdate();
+			
+			conn.close();
+			
+		}catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
 
 }
