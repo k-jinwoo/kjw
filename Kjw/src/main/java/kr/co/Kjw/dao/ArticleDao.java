@@ -241,22 +241,39 @@ public class ArticleDao {
 	}
 	
 	// updateFileDownload
-		public void updateFileDownload(String seq) {
-			try {
-				// 1,2단계
-				Connection conn = DBConfig.getInstance().getConnection();
-				// 3단계
-				PreparedStatement psmt = conn.prepareStatement(Sql.UPDATE_FILE_DOWNLOAD);
-				psmt.setString(1, seq);
-				// 4단계
-				psmt.executeUpdate();
-				// 5단계
-				// 6단계
-				conn.close();
-				
-			}catch (Exception e) {
-				e.printStackTrace();
-			}
+	public void updateFileDownload(String seq) {
+		try {
+			// 1,2단계
+			Connection conn = DBConfig.getInstance().getConnection();
+			// 3단계
+			PreparedStatement psmt = conn.prepareStatement(Sql.UPDATE_FILE_DOWNLOAD);
+			psmt.setString(1, seq);
+			// 4단계
+			psmt.executeUpdate();
+			// 5단계
+			// 6단계
+			conn.close();
+			
+		}catch (Exception e) {
+			e.printStackTrace();
 		}
+	}
+	// updateArticle
+	public void updateArticle(String title, String content, String seq) {
+		try {
+			Connection conn = DBConfig.getInstance().getConnection();
+			PreparedStatement psmt = conn.prepareStatement(Sql.UPDATE_ARTICLE);
+			psmt.setString(1, title);
+			psmt.setString(2, content);
+			psmt.setString(3, seq);
+			
+			psmt.executeUpdate();
+			conn.close();
+			
+			
+		}catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
 
 }

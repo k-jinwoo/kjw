@@ -65,6 +65,8 @@
         <a href="/Kjw/board/list.jsp?group=<%= group %>&cate=<%= cate %>" class="btnList">목록</a>
     </div>  
     
+    <!-- ------------ 댓글 ------------- -->
+    
     <!-- 댓글리스트 -->
     <section class="commentList">
         <h3>댓글목록</h3>
@@ -102,6 +104,8 @@
             </div>
         </form>
     </section>
+
+	<!-- ------------ 댓글 끝 ------------- -->
 
 </section>
 <!-- 내용 끝 -->

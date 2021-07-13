@@ -64,6 +64,11 @@ public class Sql {
 	
 	// 게시글 삭제
 	public static final String DELETE_ARTICLE = "DELETE FROM `BOARD_ARTICLE` WHERE `seq`=?";
+	// 게시글 수정
+	public static final String UPDATE_ARTICLE = "UPDATE `BOARD_ARTICLE` SET "
+											  + "`title`=?, "
+											  + "`content`=? "
+											  + "WHERE `seq`=?";
 	
 	
 	
