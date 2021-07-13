@@ -1,4 +1,9 @@
+<%@page import="kr.co.Kjw.dao.ArticleDao"%>
+<%@page import="kr.co.Kjw.bean.ArticleBean"%>
+<%@page import="java.util.List"%>
 <%@ page contentType="text/html;charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ include file="./header.jsp" %>
+
   <script>
 	    $(function(){
 	        $('.slider > ul').bxSlider({
@@ -10,7 +15,12 @@
 	        $('#tabs').tabs();
 	    });
 	</script>
-<%@ include file="./header.jsp" %>
+
+<%
+	// 메인 - 최신글 가져오기
+	List<ArticleBean> latests = ArticleDao.getInstance().selectLatests();
+%>
+
         <main>
 		    <div class="slider">
 			    <ul>
@@ -36,30 +46,39 @@
                     <a href="#"><img src="/Kjw/img/main_latest1_tit.png" alt="텃밭 가꾸기"/></a>
                     <img src="/Kjw/img/main_latest1_img.jpg" alt="이미지"/>
                     <table border="0">
+                    <% for(int i=0; i<5; i++){ %>
                         <tr>
                         	<td>></td>
-                            <td><a href="#"/></td>
+                            <td><a href="/Kjw/board/view.jsp?group=croptalk&cate=<%= latests.get(i).getCate() %>&seq=<%= latests.get(i).getSeq() %>"><%= latests.get(i).getTitle() %></a></td>
+                            <td><%= latests.get(i).getRdate() %></td>
                         </tr>
+                        <% } %>
                     </table>
                 </div>
                 <div>
                     <a href="#"><img src="/Kjw/img/main_latest2_tit.png" alt="귀농학교"/></a>
                     <img src="/Kjw/img/main_latest2_img.jpg" alt="이미지"/>
                     <table border="0">
+                    <% for(int i=5; i<10; i++){ %>
                         <tr>
                             <td>></td>
-                            <td><a href="#"/></td>
+                            <td><a href="/Kjw/board/view.jsp?group=croptalk&cate=<%= latests.get(i).getCate() %>&seq=<%= latests.get(i).getSeq() %>"><%= latests.get(i).getTitle() %></a></td>
+                            <td><%= latests.get(i).getRdate() %></td>
                         </tr>
+                    <% } %>
                     </table>
                 </div>
                 <div>
                     <a href="#"><img src="/Kjw/img/main_latest3_tit.png" alt="농작물 이야기"/></a>
                     <img src="/Kjw/img/main_latest3_img.jpg" alt="이미지"/>
                     <table border="0">
+                    <% for(int i=10; i<15; i++){ %>
                         <tr>
                             <td>></td>
-                            <td><a href="#"/></td>
+                            <td><a href="/Kjw/board/view.jsp?group=croptalk&cate=<%= latests.get(i).getCate() %>&seq=<%= latests.get(i).getSeq() %>"><%= latests.get(i).getTitle() %></a></td>
+                            <td><%= latests.get(i).getRdate() %></td>
                         </tr>
+                    <% } %>
                     </table>
                 </div>
             </div>
@@ -88,17 +107,23 @@
                         </ul>
                         <div id="tabs-1">
                             <ul>
-	                            <li><a href="#"/></li>
+	                            <% for(int i=15; i<18; i++){ %>
+		                            <li><a href="/Kjw/board/view.jsp?group=community&cate=<%= latests.get(i).getCate() %>&seq=<%= latests.get(i).getSeq() %>">. <%= latests.get(i).getTitle() %></a></li>
+		                        <% } %>
                             </ul>
                         </div>
                         <div id="tabs-2">
                             <ul>
-	                            <li><a href="#"/></li>
+	                            <% for(int i=18; i<21; i++){ %>
+		                            <li><a href="/Kjw/board/view.jsp?group=community&cate=<%= latests.get(i).getCate() %>&seq=<%= latests.get(i).getSeq() %>">. <%= latests.get(i).getTitle() %></a></li>
+		                        <% } %>
                             </ul>
                         </div>
                         <div id="tabs-3">
                             <ul>
-	                            <li><a href="#"/></li>
+	                            <% for(int i=21; i<24; i++){ %>
+		                            <li><a href="/Kjw/board/view.jsp?group=community&cate=<%= latests.get(i).getCate() %>&seq=<%= latests.get(i).getSeq() %>">. <%= latests.get(i).getTitle() %></a></li>
+		                        <% } %>
                             </ul>
                         </div>
                     </div>

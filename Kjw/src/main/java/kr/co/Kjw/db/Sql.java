@@ -91,6 +91,17 @@ public class Sql {
 	public static final String UPDATE_COMMENT = "UPDATE `BOARD_ARTICLE` SET "
 											  + "`content`=? "
 											  + "WHERE `seq`=?";
-	
+	// 메인 - 최신글
+	public static final String SELECT_LATESTS = "(SELECT * FROM `BOARD_ARTICLE` WHERE `cate`='grow' AND `parent`=0 ORDER BY `seq` DESC LIMIT 5) "
+											  + "UNION "
+											  + "(SELECT * FROM `BOARD_ARTICLE` WHERE `cate`='school' AND `parent`=0 ORDER BY `seq` DESC LIMIT 5) "
+											  + "UNION "
+											  + "(SELECT * FROM `BOARD_ARTICLE` WHERE `cate`='story' AND `parent`=0 ORDER BY `seq` DESC LIMIT 5) "
+											  + "UNION "
+											  + "(SELECT * FROM `BOARD_ARTICLE` WHERE `cate`='notice' AND `parent`=0 ORDER BY `seq` DESC LIMIT 3) "
+											  + "UNION "
+											  + "(SELECT * FROM `BOARD_ARTICLE` WHERE `cate`='qna' AND `parent`=0 ORDER BY `seq` DESC LIMIT 3) "
+											  + "UNION "
+											  + "(SELECT * FROM `BOARD_ARTICLE` WHERE `cate`='fnq' AND `parent`=0 ORDER BY `seq` DESC LIMIT 3)";
 	
 }
