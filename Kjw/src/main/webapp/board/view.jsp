@@ -1,3 +1,4 @@
+<%@page import="java.util.List"%>
 <%@page import="kr.co.Kjw.bean.ArticleBean"%>
 <%@page import="kr.co.Kjw.bean.FileBean"%>
 <%@page import="kr.co.Kjw.dao.ArticleDao"%>
@@ -30,7 +31,10 @@
 	ArticleBean article = dao.selectArticle(seq);
 	
 	// 해당 글 조회수 업데이트
-		dao.updateArticleHit(seq);
+	dao.updateArticleHit(seq);
+	
+	// 댓글 가져오기
+	List<ArticleBean> comments = dao.selectComments(seq);
 	
 %>
 <jsp:include page="<%= path %>"/>
@@ -70,23 +74,27 @@
     <!-- 댓글리스트 -->
     <section class="commentList">
         <h3>댓글목록</h3>
-        
+        <% for(ArticleBean comment : comments){ %>
         <article class="comment">
             <span>
-                <span></span>
-                <span></span>
+                <span><%= comment.getNick() %></span>
+                <span><%= comment.getRdate().substring(2, 16) %></span>
             </span>
-            <textarea name="comment" data-seq="" data-parent="" readonly></textarea>
-            
+            <textarea name="comment" data-seq="<%= comment.getSeq() %>" data-parent="<%= comment.getParent() %>" readonly><%= comment.getContent() %></textarea>
+            <% if(comment.getUid().equals(mb.getUid())){ %>
             <div>
                 <a href="#" class="btnCommentDel">삭제</a>
                 <a href="#" class="btnCommentModify">수정</a>
             </div>
+            <% } %>
         </article>
+        <% } %>
         
+        <% if(comments.size() == 0){ %>
         <p class="empty">
             등록된 댓글이 없습니다.
         </p>
+        <% } %>
     </section>
 
     <!-- 댓글입력폼 -->

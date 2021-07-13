@@ -69,7 +69,12 @@ public class Sql {
 											  + "`title`=?, "
 											  + "`content`=? "
 											  + "WHERE `seq`=?";
-	
+	// 댓글 보기
+	public static final String SELECT_COMMENTS = "SELECT a.*, b.nick FROM `BOARD_ARTICLE` AS a "
+											   + "JOIN `BOARD_MEMBER` AS b "
+											   + "ON a.uid = b.uid "
+											   + "WHERE `parent`=? "
+											   + "ORDER BY `seq` ASC";
 	
 	
 	
