@@ -212,5 +212,51 @@ public class ArticleDao {
 			e.printStackTrace();
 		}
 	}
+	
+	// selectFile
+	public FileBean selectFile(String seq) {
+		FileBean fb = new FileBean();
+		
+		try {
+			Connection conn = DBConfig.getInstance().getConnection();
+			PreparedStatement psmt = conn.prepareStatement(Sql.SELECT_FILE);
+			psmt.setString(1, seq);
+			
+			ResultSet rs = psmt.executeQuery();
+			
+			if(rs.next()) {
+				fb.setSeq(rs.getInt(1));
+				fb.setParent(rs.getInt(2));
+				fb.setOriName(rs.getString(3));
+				fb.setNewName(rs.getString(4));
+				fb.setDownload(rs.getInt(5));
+				fb.setRdate(rs.getString(6));
+			}
+			conn.close();
+			
+		}catch (Exception e) {
+			e.printStackTrace();
+		}
+		return fb;
+	}
+	
+	// updateFileDownload
+		public void updateFileDownload(String seq) {
+			try {
+				// 1,2단계
+				Connection conn = DBConfig.getInstance().getConnection();
+				// 3단계
+				PreparedStatement psmt = conn.prepareStatement(Sql.UPDATE_FILE_DOWNLOAD);
+				psmt.setString(1, seq);
+				// 4단계
+				psmt.executeUpdate();
+				// 5단계
+				// 6단계
+				conn.close();
+				
+			}catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
 
 }

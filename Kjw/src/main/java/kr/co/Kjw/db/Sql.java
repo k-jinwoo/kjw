@@ -28,11 +28,11 @@ public class Sql {
 	
 	// Dao
 	public static final String SELECT_ARTICLE  = "SELECT * FROM `BOARD_ARTICLE` AS a "
-											   + "LEFT JOIN `JBOARD_FILE` AS b "
+											   + "LEFT JOIN `BOARD_FILE` AS b "
 											   + "ON a.seq = b.parent "
 											   + "WHERE a.`seq`=?";
 	public static final String SELECT_ARTICLES = "SELECT a.*, b.`nick` FROM `BOARD_ARTICLE` AS a "
-											   + "JOIN `JBOARD_MEMBER` AS b "
+											   + "JOIN `BOARD_MEMBER` AS b "
 											   + "ON a.uid = b.uid "
 											   + "WHERE `parent`=0 AND `cate`=? "
 											   + "ORDER BY `seq` DESC "
@@ -59,7 +59,8 @@ public class Sql {
 	public static final String SELECT_FILE = "SELECT * FROM `BOARD_FILE` WHERE `seq`=?";
 		// 조회수
 	public static final String UPDATE_ARTICLE_HIT = "UPDATE `BOARD_ARTICLE` SET `hit`=hit+1 WHERE `seq`=?";
-
+		// 다운로드 횟수
+	public static final String UPDATE_FILE_DOWNLOAD = "UPDATE `BOARD_FILE` SET `download`=`download`+1 WHERE `seq`=?";
 	
 	// 게시글 삭제
 	public static final String DELETE_ARTICLE = "DELETE FROM `BOARD_ARTICLE` WHERE `seq`=?";
