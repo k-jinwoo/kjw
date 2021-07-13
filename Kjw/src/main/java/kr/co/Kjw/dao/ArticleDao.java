@@ -369,5 +369,25 @@ public class ArticleDao {
 			e.printStackTrace();
 		}
 	}
+	
+	// updateComment
+	public int updateComment(String content, String seq) {
+		int result = 0;
+		
+		try {
+			Connection conn = DBConfig.getInstance().getConnection();
+			PreparedStatement psmt = conn.prepareStatement(Sql.UPDATE_COMMENT);
+			psmt.setString(1, content);
+			psmt.setString(2, seq);
+			
+			result = psmt.executeUpdate();
+			
+			conn.close();
+			
+		}catch (Exception e) {
+			e.printStackTrace();
+		}
+		return result;
+	}
 
 }

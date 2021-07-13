@@ -6,6 +6,7 @@
 <%@ include file="../header.jsp" %>
 <script>
 	jQuery(function(){
+		// 게시글 삭제 버튼
 		$('.btnDelete').click(function(){
 			if(confirm('정말 삭제 하시겠습니까?')){
 				return true;
@@ -13,11 +14,53 @@
 				return false;
 			}
 		});
+		
+		// 댓글 삭제 버튼
 		$('.btnCommentDel').click(function(){
 			if(confirm('정말 댓글을 삭제 하시겠습니까?')){
 				return true;
 			}else{
 				return false;
+			}
+		});
+		
+		// 댓글 수정 버튼
+		$('.btnCommentModify').click(function(e) {
+			e.preventDefault();
+			
+			var btnThis = $(this);
+			var mode = btnThis.text();
+			var textarea = $(this).parent().prev();
+			
+			if(mode == '수정'){
+				// 수정 모드
+				btnThis.text('수정완료');
+				textarea.attr('readonly', false).focus();
+				textarea.css('outline', '1px gray solid');
+			}else{
+				// 수정완료 모드
+				var content = textarea.val();
+				var seq = textarea.attr('data-seq');
+				var parent = textarea.attr('data-parent');
+				
+				var jsonData = {'seq': seq,
+								'parent':parent,
+								'content':content};
+				$.ajax({
+					url: '/Kjw/board/proc/commentUpdate.jsp',
+					type: 'post',
+					data: jsonData,
+					dataType: 'json',
+					success: function(data) {
+						if(data.result == 1){
+							textarea.attr('readonly', true);
+							textarea.css('outline', 'none');
+							btnThis.text('수정');
+							
+							alert('수정 되었습니다.');
+						}
+					}
+				});
 			}
 		});
 	});

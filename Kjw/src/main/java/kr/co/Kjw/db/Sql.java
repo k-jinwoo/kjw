@@ -87,7 +87,10 @@ public class Sql {
 	public static final String UPDATE_COMMENT_MINUS = "UPDATE `BOARD_ARTICLE` SET `comment` = `comment`-1 WHERE `seq`=?";
 		// 댓글 삭제
 	public static final String DELETE_COMMENT = "DELETE FROM `BOARD_ARTICLE` WHERE `seq`=?";
-	
+		// 댓글 수정
+	public static final String UPDATE_COMMENT = "UPDATE `BOARD_ARTICLE` SET "
+											  + "`content`=? "
+											  + "WHERE `seq`=?";
 	
 	
 }
