@@ -101,10 +101,10 @@
     <section class="commentForm">
         <h3>댓글쓰기</h3>
         <form action="/Kjw/board/proc/comment.jsp" method="post">
-        	<input type="hidden" name="group" value=""/>
-        	<input type="hidden" name="cate" value=""/>
-        	<input type="hidden" name="parent" value=""/>
-        	<input type="hidden" name="uid" value=""/>
+        	<input type="hidden" name="group" value="<%= group %>"/>
+        	<input type="hidden" name="cate" value="<%= cate %>"/>
+        	<input type="hidden" name="parent" value="<%= article.getSeq() %>"/>
+        	<input type="hidden" name="uid" value="<%= mb.getUid() %>"/>
             <textarea name="comment" required></textarea>
             <div>
                 <a href="#" class="btnCancel">취소</a>

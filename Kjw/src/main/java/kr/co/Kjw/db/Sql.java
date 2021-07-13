@@ -75,6 +75,16 @@ public class Sql {
 											   + "ON a.uid = b.uid "
 											   + "WHERE `parent`=? "
 											   + "ORDER BY `seq` ASC";
+		// 댓글 추가
+	public static final String INSERT_COMMENT = "INSERT INTO `BOARD_ARTICLE` SET "
+											  + "`parent`=?, "
+											  + "`content`=?, "
+											  + "`uid`=?, "
+											  + "`regip`=?, "
+											  + "`rdate`=NOW()";
+		// 댓글 카운트 증감
+	public static final String UPDATE_COMMENT_PLUS = "UPDATE `BOARD_ARTICLE` SET `comment` = `comment`+1 WHERE `seq`=?";
+	public static final String UPDATE_COMMENT_MINUS = "UPDATE `BOARD_ARTICLE` SET `comment` = `comment`-1 WHERE `seq`=?";
 	
 	
 	

@@ -258,6 +258,7 @@ public class ArticleDao {
 			e.printStackTrace();
 		}
 	}
+	
 	// updateArticle
 	public void updateArticle(String title, String content, String seq) {
 		try {
@@ -275,6 +276,7 @@ public class ArticleDao {
 			e.printStackTrace();
 		}
 	}
+	
 	// selectComments
 	public List<ArticleBean> selectComments(String parent) {
 		List<ArticleBean> articles = new ArrayList<>();
@@ -309,6 +311,47 @@ public class ArticleDao {
 			e.printStackTrace();
 		}
 		return articles;
+	}
+	
+	// insertComment
+	public void insertComment(ArticleBean comment) {
+		try {
+			Connection conn = DBConfig.getInstance().getConnection();
+			PreparedStatement psmt = conn.prepareStatement(Sql.INSERT_COMMENT);
+			psmt.setInt(1, comment.getParent());
+			psmt.setString(2, comment.getContent());
+			psmt.setString(3, comment.getUid());
+			psmt.setString(4, comment.getRegip());
+			
+			psmt.executeUpdate();
+			
+			conn.close();
+			
+		}catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+	
+	// updateCommentCount
+	public void updateCommentCount(String seq, int type) {
+		try {
+			PreparedStatement psmt = null;
+			
+			Connection conn = DBConfig.getInstance().getConnection();
+			if(type == 1) {
+				psmt = conn.prepareStatement(Sql.UPDATE_COMMENT_PLUS);
+			}else {
+				psmt = conn.prepareStatement(Sql.UPDATE_COMMENT_MINUS);
+			}
+			
+			psmt.setString(1, seq);
+			psmt.executeUpdate();
+			
+			conn.close();
+			
+		}catch (Exception e) {
+			e.printStackTrace();
+		}
 	}
 
 }
